@@ -1,4 +1,3 @@
-import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import HomePage from "@/pages/index";
 import { GlobalStyle } from "@/src/components/styles/GlobalStyle";

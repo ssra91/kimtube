@@ -1,17 +1,9 @@
-import styled from "@emotion/styled";
+import Home from "@/src/Views/Home";
+import { NEXT_PUBLIC_API_KEY } from "@/src/constants/config";
 
 const HomePage = () => {
+  console.log("@@ API_KEY", NEXT_PUBLIC_API_KEY);
+  return <Home />;
+};
 
-  return (
-    <Container>
-        page!!!!!!!!!!!!!!!!!
-    </Container>
-  )
-}
-
-const Container = styled.div`
-  
-`;
-
-
-export default HomePage
+export default HomePage;
