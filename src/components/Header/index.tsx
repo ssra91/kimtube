@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { IconBars, IconLogo } from "@/src/assets/icons";
+import { IconBars, IconDots, IconLogo } from "@/src/assets/icons";
 import IconButton from "@/src/components/Button/IconButton";
 import SearchBox from "@/src/components/SearchBox";
 import Logo from "@/src/components/Header/Logo";
