@@ -1,4 +1,4 @@
-import Home from "@/src/Views/Home";
+import Home from "@/src/views/Home";
 import { NEXT_PUBLIC_API_KEY } from "@/src/constants/config";
 
 const HomePage = () => {
