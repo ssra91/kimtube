@@ -5,14 +5,16 @@ import { useEffect, useState } from "react";
 
 const Logo = () => {
   const [lang, setLang] = useState("");
+  const [region] = lang.split("-");
 
   useEffect(() => {
     setLang(navigator?.language);
   }, []);
+
   return (
     <Container href="/">
       <IconLogo />
-      <Lang>{lang}</Lang>
+      <Lang>{region}</Lang>
     </Container>
   );
 };
@@ -21,6 +23,7 @@ const Container = styled(Link)`
   display: flex;
   align-items: flex-start;
   padding: 0 16px;
+  color: ${({ theme }) => theme.text.text1};
   svg {
     width: 90px;
     height: 20px;

@@ -1,27 +1,19 @@
 import type { AppProps } from "next/app";
 import { GlobalStyle } from "@/src/components/styles/GlobalStyle";
 import Header from "@/src/components/Header";
-
 import { ThemeProvider } from "@emotion/react";
 import { themes } from "@/src/utils/theme";
-import { Theme } from "@/src/models/theme";
-import { useState } from "react";
 import styled from "@emotion/styled";
+import { ThemeProps } from "@/src/models/theme";
 
 export default function App({ Component, pageProps }: AppProps) {
-  // const [themeMode, setThemeMode] = useState<"dark" | "light">("dark");
   const themeMode = "dark";
 
   return (
-    <ThemeProvider theme={themes[themeMode] as Theme}>
+    <ThemeProvider theme={themes[themeMode] as ThemeProps}>
       <Container>
-        {/* <button */}
-        {/*  onClick={() => setThemeMode(themeMode === "dark" ? "light" : "dark")} */}
-        {/* > */}
-        {/*  테마:{themeMode} */}
-        {/* </button> */}
-        <Header />
         <GlobalStyle />
+        <Header />
         <Component {...pageProps} />
       </Container>
     </ThemeProvider>
@@ -29,5 +21,6 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 
 const Container = styled.div`
+  min-height: 100vh;
   background-color: ${({ theme }) => theme.bg.bg1};
 `;

@@ -1,6 +1,9 @@
-export interface Theme {
+export interface ThemeProps {
   bg: {
     bg1: string;
+    bg2: string;
+    bg3: string;
+    bg4: string;
   };
   text: {
     white: string;
@@ -12,5 +15,11 @@ export interface Theme {
     line1: string;
     line2: string;
     line3: string;
+  };
+  color: {
+    white: string;
+    black: string;
+    caption1: string;
+    caption2: string;
   };
 }

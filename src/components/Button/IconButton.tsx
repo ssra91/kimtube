@@ -35,12 +35,13 @@ const Container = styled.button<StyleProps>`
   height: 40px;
   border: 1px solid transparent;
   cursor: pointer;
+  color: ${({ theme }) => theme.text.text1};
 
   border-radius: ${({ radius }) => radius || "50%"};
   ${({ backgroundColor, hoverBackgroundColor }) => css`
     background-color: ${backgroundColor};
     &:hover {
-      background-color: ${hoverBackgroundColor || "transparent"};
+      background-color: ${hoverBackgroundColor};
     }
   `}
 `;
