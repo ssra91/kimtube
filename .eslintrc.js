@@ -12,6 +12,7 @@ module.exports = {
   ],
   parser: "@typescript-eslint/parser",
   rules: {
+    "import/prefer-default-export": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "no-console": "off",
     "react/button-has-type": "off",
