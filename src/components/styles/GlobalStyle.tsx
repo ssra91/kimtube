@@ -145,6 +145,14 @@ const resetStyles = css`
   *::after {
     box-sizing: border-box;
   }
+
+  input,
+  button {
+    padding: 0;
+    outline: 0;
+    background-color: transparent;
+    border: 0;
+  }
 `;
 export function GlobalStyle() {
   return <Global styles={resetStyles} />;

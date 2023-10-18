@@ -12,6 +12,8 @@ module.exports = {
   ],
   parser: "@typescript-eslint/parser",
   rules: {
+    "react/require-default-props": "off",
+    "no-unused-vars": "off",
     "import/prefer-default-export": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "no-console": "off",
