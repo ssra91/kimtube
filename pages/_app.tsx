@@ -5,18 +5,30 @@ import { ThemeProvider } from "@emotion/react";
 import { themes } from "@/src/utils/theme";
 import styled from "@emotion/styled";
 import { ThemeProps } from "@/src/models/theme";
+import {
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+import React from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
   const themeMode = "dark";
 
+  const [queryClient] = React.useState(() => new QueryClient());
+
   return (
-    <ThemeProvider theme={themes[themeMode] as ThemeProps}>
-      <Container>
-        <GlobalStyle />
-        <Header />
-        <Component {...pageProps} />
-      </Container>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <Hydrate state={pageProps.dehydratedState}>
+        <ThemeProvider theme={themes[themeMode] as ThemeProps}>
+          <Container>
+            <GlobalStyle />
+            <Header />
+            <Component {...pageProps} />
+          </Container>
+        </ThemeProvider>
+      </Hydrate>
+    </QueryClientProvider>
   );
 }
 
