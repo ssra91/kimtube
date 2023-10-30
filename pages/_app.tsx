@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import type { AppProps } from "next/app";
 import { GlobalStyle } from "@/src/components/styles/GlobalStyle";
 import Header from "@/src/components/Header";
@@ -10,12 +11,11 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-import React from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
   const themeMode = "dark";
 
-  const [queryClient] = React.useState(() => new QueryClient());
+  const [queryClient] = useState(() => new QueryClient());
 
   return (
     <QueryClientProvider client={queryClient}>
