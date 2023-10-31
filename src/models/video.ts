@@ -1,19 +1,20 @@
 export interface VideosResponse {
   kind: string;
   etag: string;
-  items: VideosItem[];
+  items: IVideosItem[];
   nextPageToken: string;
   pageInfo: VideosPageInfo;
 }
 
-export interface VideosItem {
+export interface IVideosItem {
   kind: string;
   etag: string;
   id: string;
-  snippet: Snippet;
+  snippet: ISnippet;
+  statistics: IStatistics;
 }
 
-export interface Snippet {
+export interface ISnippet {
   publishedAt: string;
   channelId: string;
   title: string;
@@ -74,4 +75,11 @@ export interface Localized {
 export interface VideosPageInfo {
   totalResults: number;
   resultsPerPage: number;
+}
+
+export interface IStatistics {
+  viewCount: string;
+  likeCount: string;
+  favoriteCount: string;
+  commentCount: string;
 }
