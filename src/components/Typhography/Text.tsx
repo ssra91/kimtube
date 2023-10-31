@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled, { CSSObject } from "@emotion/styled";
 import React from "react";
 
 const typhographyMap = {
@@ -44,6 +44,7 @@ interface StyleProps {
   fontWeight?: FontWeightValue;
   lineHeight?: string;
   fontSize?: string;
+  customStyle?: CSSObject;
 }
 interface Props extends StyleProps {
   children?: React.ReactNode;
@@ -61,6 +62,7 @@ const Text = ({
   color,
   padding,
   margin,
+  customStyle,
 }: Props) => {
   const typhography = typhographyMap[level];
   return (
@@ -70,6 +72,7 @@ const Text = ({
       color={color}
       padding={padding}
       margin={margin}
+      customStyle={customStyle}
       {...typhography}
     >
       {children || value}
@@ -84,6 +87,7 @@ const Container = styled.div<StyleProps>`
   font-weight: ${({ fontWeight }) => fontWeight};
   line-height: ${({ lineHeight }) => lineHeight};
   font-size: ${({ fontSize }) => fontSize};
+  ${({ customStyle }) => customStyle};
 `;
 
 export default Text;

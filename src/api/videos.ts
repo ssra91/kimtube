@@ -2,22 +2,11 @@ import axios from "axios";
 import { API_KEY } from "@/src/constants/config";
 import { VideosResponse } from "@/src/models/video";
 
-type Part =
-  | "snippet"
-  | "contentDetails"
-  | "fileDetails"
-  | "liveStreamingDetails"
-  | "player"
-  | "processingDetails"
-  | "recordingDetails"
-  | "statistics"
-  | "status"
-  | "suggestions"
-  | "topicDetails";
+// part parameter = snippet, contentDetails, fileDetails, liveStreamingDetails, player, processingDetails, recordingDetails, statistics, status, suggestions, topicDetails
 
 type Chart = "mostPopular";
 interface Params {
-  part: Part;
+  part: string;
   chart?: Chart;
   id?: string;
   maxResults?: number;
