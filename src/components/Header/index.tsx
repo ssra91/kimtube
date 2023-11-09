@@ -3,10 +3,10 @@ import SearchBox from "@/src/components/SearchBox";
 import Logo from "@/src/components/Header/Logo";
 import Index from "@/src/components/Header/Setting";
 import Sign from "@/src/components/Header/Sign";
-import Sidebar from "@/src/components/Header/Sidebar";
-import Menu from "@/src/components/Header/Menu";
 import { toggleSidebar } from "@/src/redux/app/slice";
 import { useAppDispatch } from "@/src/redux/hooks";
+import Menu from "@/src/components/Header/Menu";
+import Sidebar from "@/src/components/Header/Sidebar";
 
 const Header = () => {
   const dispatch = useAppDispatch();
