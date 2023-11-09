@@ -1,28 +1,30 @@
 import styled from "@emotion/styled";
-import { IconBars, IconDots, IconLogo } from "@/src/assets/icons";
-import IconButton from "@/src/components/Button/IconButton";
 import SearchBox from "@/src/components/SearchBox";
 import Logo from "@/src/components/Header/Logo";
-import Setting from "@/src/components/Header/Setting";
+import Index from "@/src/components/Header/Setting";
 import Sign from "@/src/components/Header/Sign";
+import Sidebar from "@/src/components/Header/Sidebar";
+import Menu from "@/src/components/Header/Menu";
+import { toggleSidebar } from "@/src/redux/app/slice";
+import { useAppDispatch } from "@/src/redux/hooks";
 
 const Header = () => {
+  const dispatch = useAppDispatch();
+
+  const handleMenuClick = () => {
+    dispatch(toggleSidebar());
+  };
   return (
-    <Container>
-      <IconButton>
-        <IconBars />
-      </IconButton>
-      <Logo />
-      <SearchBox />
-      <Setting />
-      <Sign />
-      {/* 메뉴 바 */}
-      {/* 로고 */}
-      {/* 검색창 */}
-      {/* 마이크 */}
-      {/* 세팅 */}
-      {/* 로그인 */}
-    </Container>
+    <>
+      <Container>
+        <Menu onClick={handleMenuClick} />
+        <Logo />
+        <SearchBox />
+        <Index />
+        <Sign />
+      </Container>
+      <Sidebar />
+    </>
   );
 };
 

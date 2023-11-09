@@ -13,6 +13,8 @@ module.exports = {
   parser: "@typescript-eslint/parser",
   rules: {
     "import/no-unresolved": "off",
+    "import/no-named-as-default": "off",
+    "react/jsx-no-constructed-context-values": "off",
     "react/require-default-props": "off",
     "no-unused-vars": "off",
     "import/prefer-default-export": "off",
