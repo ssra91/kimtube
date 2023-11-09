@@ -12,6 +12,7 @@ module.exports = {
   ],
   parser: "@typescript-eslint/parser",
   rules: {
+    "import/no-unresolved": "off",
     "react/require-default-props": "off",
     "no-unused-vars": "off",
     "import/prefer-default-export": "off",
