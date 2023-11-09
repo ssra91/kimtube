@@ -11,8 +11,9 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-import { Provider } from "react-redux";
+
 import { store } from "@/src/redux/store";
+import { Provider } from "react-redux";
 
 export default function App({ Component, pageProps }: AppProps) {
   const themeMode = "dark";

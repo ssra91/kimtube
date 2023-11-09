@@ -9,18 +9,21 @@ interface StyleProps {
 }
 interface Props extends StyleProps {
   children: ReactNode;
+  onClick?: () => void;
 }
 const IconButton = ({
   children,
   backgroundColor,
   hoverBackgroundColor,
   radius,
+  onClick,
 }: Props) => {
   return (
     <Container
       backgroundColor={backgroundColor}
       hoverBackgroundColor={hoverBackgroundColor}
       radius={radius}
+      onClick={onClick}
     >
       {children}
     </Container>
