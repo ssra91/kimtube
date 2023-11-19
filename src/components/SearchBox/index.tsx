@@ -1,16 +1,26 @@
 import styled from "@emotion/styled";
 import { IconSearch } from "@/src/assets/icons";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import Mic from "@/src/components/Header/Mic";
+import { useRouter } from "next/router";
 
 const SearchBox = () => {
+  const router = useRouter();
+  const [searchText, setSearchText] = useState(""); // 검색어 상태
+
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
+    router.push(`/search/${searchText}`);
   };
+
+  const handleInputText = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchText(e.target.value);
+  };
+
   return (
     <Container>
       <form onSubmit={handleSubmit}>
-        <input />
+        <input onChange={handleInputText} />
         <button type="submit">
           <IconSearch />
         </button>

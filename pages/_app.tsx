@@ -11,14 +11,24 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { store } from "@/src/redux/store";
 import { Provider } from "react-redux";
 
 export default function App({ Component, pageProps }: AppProps) {
   const themeMode = "dark";
 
-  const [queryClient] = useState(() => new QueryClient());
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            retry: 0,
+            refetchOnWindowFocus: false,
+          },
+        },
+      }),
+  );
 
   return (
     <Provider store={store}>
@@ -32,6 +42,7 @@ export default function App({ Component, pageProps }: AppProps) {
             </Container>
           </ThemeProvider>
         </Hydrate>
+        <ReactQueryDevtools />
       </QueryClientProvider>
     </Provider>
   );
