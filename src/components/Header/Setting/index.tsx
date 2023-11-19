@@ -10,7 +10,7 @@ const Setting = () => {
       <IconButton onClick={toggleSetting}>
         <IconDots />
       </IconButton>
-      <Content />
+      {/* <Content /> */}
     </Container>
   );
 };

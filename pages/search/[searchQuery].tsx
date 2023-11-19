@@ -1,7 +1,12 @@
 import styled from "@emotion/styled";
+import Search from "@/src/views/Search";
 
 const SearchPage = () => {
-  return <Container>SearchPage</Container>;
+  return (
+    <Container>
+      <Search />
+    </Container>
+  );
 };
 
 const Container = styled.div``;

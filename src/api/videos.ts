@@ -4,10 +4,9 @@ import { VideosResponse } from "@/src/models/video";
 
 // part parameter = snippet, contentDetails, fileDetails, liveStreamingDetails, player, processingDetails, recordingDetails, statistics, status, suggestions, topicDetails
 
-type Chart = "mostPopular";
 interface Params {
   part: string;
-  chart?: Chart;
+  chart?: "mostPopular";
   id?: string;
   maxResults?: number;
   regionCode?: string;
