@@ -14,7 +14,6 @@ const VideosList = () => {
       }),
     {},
   );
-  console.log("@@ data", data);
   return (
     <Container>
       <GridList cols={6} gap={[16, 40]}>

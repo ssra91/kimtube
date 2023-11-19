@@ -12,6 +12,9 @@ export interface IVideosItem {
   id: string;
   snippet: ISnippet;
   statistics: IStatistics;
+  player: {
+    embedHtml: string;
+  };
 }
 
 export interface ISnippet {
