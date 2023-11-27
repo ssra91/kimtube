@@ -49,6 +49,7 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 
 const Container = styled.div`
+  padding-top: 56px;
   min-height: 100vh;
   background-color: ${({ theme }) => theme.bg.bg1};
 `;

@@ -1,28 +1,29 @@
 import styled from "@emotion/styled";
-import { useQuery } from "@tanstack/react-query";
-import { fetchVideos } from "@/src/api/videos";
 import VideosItem from "@/src/components/VideoItem";
 import GridList from "@/src/components/GridList";
+import Link from "next/link";
+import { IVideosItem } from "@/src/models/video";
 
-const VideosList = () => {
-  const { data, isLoading, isError } = useQuery(
-    ["videos"],
-    () =>
-      fetchVideos({
-        part: "snippet, statistics",
-        chart: "mostPopular",
-      }),
-    {},
-  );
+interface Props {
+  data: IVideosItem[];
+}
+
+const VideosList = ({ data }: Props) => {
   return (
     <Container>
       <GridList cols={6} gap={[16, 40]}>
-        {data?.items.map((item) => <VideosItem key={item.id} item={item} />)}
+        {data?.map((item) => (
+          <Link href={`/watch?id=${item.id}`} key={item.id}>
+            <VideosItem item={item} />
+          </Link>
+        ))}
       </GridList>
     </Container>
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  padding: 24px;
+`;
 
 export default VideosList;

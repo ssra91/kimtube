@@ -15,11 +15,13 @@ export interface DefaultBoxProps {
 }
 interface Props extends DefaultBoxProps {
   children?: any;
+  className?: string;
 }
 
 // styled box
 const Box = ({
   children,
+  className,
   tag,
   display,
   padding,
@@ -33,6 +35,7 @@ const Box = ({
 }: Props) => {
   return (
     <Container
+      className={className}
       display={display}
       as={tag ?? "div"}
       padding={padding}

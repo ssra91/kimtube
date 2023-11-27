@@ -4,13 +4,17 @@ import { SearchResponse } from "@/src/models/serach";
 interface ISearchParams {
   part: string;
   q: string;
+  maxResults?: number;
 }
 
 export const searchVideos = async (params: ISearchParams) => {
   const res = await httpClient<SearchResponse>({
     method: "GET",
     url: "/search",
-    params,
+    params: {
+      maxResults: 20,
+      ...params,
+    },
   });
   return res.data;
 };
