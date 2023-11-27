@@ -1,24 +1,36 @@
 import styled, { CSSObject } from "@emotion/styled";
 import React from "react";
 
-const typhographyMap = {
-  h1: {
+// | "display40"
+// | "display36"
+// | "title28"
+// | "title26"
+// | "title22"
+// | "title20"
+// | "subtitle18"
+// | "body16"
+// | "body15"
+// | "body14"
+// | "caption13"
+// | "caption12"
+const typographyMap = {
+  title20: {
     fontSize: "20px",
     lineHeight: "28px",
   },
-  h2: {
+  subtitle18: {
     fontSize: "18px",
     lineHeight: "26px",
   },
-  h3: {
+  body16: {
     fontSize: "16px",
     lineHeight: "22px",
   },
-  p1: {
+  body14: {
     fontSize: "14px",
     lineHeight: "20px",
   },
-  p2: {
+  caption12: {
     fontSize: "12px",
     lineHeight: "18px",
   },
@@ -49,7 +61,7 @@ interface StyleProps {
 interface Props extends StyleProps {
   children?: React.ReactNode;
   tag: "h1" | "h2" | "h3" | "h4" | "p" | "span" | "strong" | "em";
-  level: "h1" | "h2" | "h3" | "p1" | "p2" | "c1";
+  level: "title20" | "subtitle18" | "body16" | "body14" | "caption12";
   value?: string;
 }
 
@@ -64,7 +76,7 @@ const Text = ({
   margin,
   customStyle,
 }: Props) => {
-  const typhography = typhographyMap[level];
+  const typography = typographyMap[level];
   return (
     <Container
       as={tag}
@@ -73,7 +85,7 @@ const Text = ({
       padding={padding}
       margin={margin}
       customStyle={customStyle}
-      {...typhography}
+      {...typography}
     >
       {children || value}
     </Container>

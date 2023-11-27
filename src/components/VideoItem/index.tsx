@@ -9,6 +9,7 @@ import Avatar from "@/src/components/Avatar";
 import { numberWithUnit } from "@/src/utils/number";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { useChannels } from "@/src/hooks/useChannels";
 
 dayjs.extend(relativeTime);
 
@@ -17,6 +18,11 @@ interface Props {
 }
 const VideosItem = ({ item }: Props) => {
   const theme = useTheme();
+
+  const { channel } = useChannels({
+    id: item.snippet.channelId,
+  });
+
   return (
     <Container>
       <div className="thumnail">
@@ -24,13 +30,14 @@ const VideosItem = ({ item }: Props) => {
       </div>
       <HStack padding="12px 0 0">
         <Avatar
-          url="https://yt3.ggpht.com/TjSlbvsyFZvCYMrV_ymIEX-_7XiU9P4g3DA-1cKUr0W28h33WgDD0ra8ggyaGxJs4ixwJcUkQA=s68-c-k-c0x00ffffff-no-rj"
+          url={channel?.snippet?.thumbnails?.default?.url}
           margin="0 12px 0 0"
         />
-        <Box>
+
+        <Box className="box">
           <Text
             tag="h3"
-            level="h3"
+            level="body16"
             color={theme.text.text1}
             fontWeight={FONT_WEIGHT.MEDIUM}
             margin=" 0 0 4px"
@@ -38,11 +45,11 @@ const VideosItem = ({ item }: Props) => {
             {item.snippet.title}
           </Text>
           <Link href="/">
-            <Text tag="p" level="p1" color={theme.text.text2}>
+            <Text tag="p" level="body14" color={theme.text.text2}>
               {item.snippet.channelTitle}
             </Text>
           </Link>
-          <Text tag="p" level="p1" color={theme.text.text2}>
+          <Text tag="p" level="body14" color={theme.text.text2}>
             {numberWithUnit(item.statistics.viewCount)} views streamed{" "}
             {dayjs(item.snippet.publishedAt).fromNow()}
           </Text>

@@ -1,28 +1,31 @@
-import axios from "axios";
 import { API_KEY } from "@/src/constants/config";
 import { VideosResponse } from "@/src/models/video";
+import { httpClient } from "@/src/api/httpClient";
 
 // part parameter = snippet, contentDetails, fileDetails, liveStreamingDetails, player, processingDetails, recordingDetails, statistics, status, suggestions, topicDetails
 
-interface Params {
-  part: string;
+export interface IVideosParams {
+  part?: string;
   chart?: "mostPopular";
   id?: string;
   maxResults?: number;
   regionCode?: string;
   pageToken?: string;
+  videoCategoryId?: string;
   [key: string]: any;
 }
-export const fetchVideos = async (params: Params) => {
-  const { data } = await axios<VideosResponse>({
+export const fetchVideos = async (params: IVideosParams) => {
+  const { data } = await httpClient<VideosResponse>({
     method: "GET",
-    url: "https://www.googleapis.com/youtube/v3/videos",
+    url: "/videos",
     params: {
       key: API_KEY,
+      part: "snippet, id, statistics",
       regionCode: "KR",
-      maxResults: 18,
+      maxResults: 20,
       ...params,
     },
   });
+
   return data;
 };
