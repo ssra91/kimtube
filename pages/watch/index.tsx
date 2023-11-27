@@ -9,6 +9,8 @@ const WatchPage = () => {
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  padding: 0 24px 16px;
+`;
 
 export default WatchPage;
