@@ -47,7 +47,7 @@ const Watch = () => {
 
 const Container = styled.div`
   .padding {
-    padding-top: 24px;
+    padding: 24px 24px 0 0;
   }
 `;
 

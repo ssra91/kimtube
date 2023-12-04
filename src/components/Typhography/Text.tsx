@@ -34,6 +34,10 @@ const typographyMap = {
     fontSize: "12px",
     lineHeight: "18px",
   },
+  caption10: {
+    fontSize: "10px",
+    lineHeight: "20px",
+  },
   c1: {
     fontSize: "13px",
     lineHeight: "18px",
@@ -61,7 +65,14 @@ interface StyleProps {
 interface Props extends StyleProps {
   children?: React.ReactNode;
   tag: "h1" | "h2" | "h3" | "h4" | "p" | "span" | "strong" | "em";
-  level: "title20" | "subtitle18" | "body16" | "body14" | "caption12";
+  level:
+    | "title20"
+    | "subtitle18"
+    | "body16"
+    | "body14"
+    | "caption12"
+    | "caption10"
+    | "c1";
   value?: string;
 }
 
