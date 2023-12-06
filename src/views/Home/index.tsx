@@ -22,7 +22,11 @@ const Home = () => {
   const { fetchNextPage, data } = useInfiniteQuery({
     queryKey: ["videos"],
     queryFn: ({ pageParam }) =>
-      fetchVideos({ chart: "mostPopular", pageToken: pageParam }),
+      fetchVideos({
+        chart: "mostPopular",
+        pageToken: pageParam,
+        videoCategoryId,
+      }),
     cacheTime: 1000 * 60 * 30,
     staleTime: 1000 * 60 * 30,
     getNextPageParam: (lastPage, allPages) => {
@@ -39,7 +43,7 @@ const Home = () => {
 
   if (videos?.length === 0) return <p>데이터가 존재하지 않습니다.</p>;
 
-  if (!data) return <div>로딩중</div>;
+  if (!videos) return <div>로딩중</div>;
   return (
     <Container>
       <CategoriesMenu onCategoryChange={handleCategoryChange} />
