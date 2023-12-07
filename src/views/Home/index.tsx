@@ -10,11 +10,6 @@ const Home = () => {
   const [videoCategoryId, setVideoCategoryId] = useState<string | undefined>(
     undefined,
   );
-  // const { data, isLoading, isError } = useVideos({
-  //   chart: "mostPopular",
-  //   videoCategoryId,
-  // });
-
   const handleCategoryChange = (id: string) => {
     setVideoCategoryId(id);
   };
@@ -36,10 +31,8 @@ const Home = () => {
       return nextPageToken;
     },
   });
-  console.log("@@ data", data);
 
   const videos = data?.pages.map((page) => page.items).flat();
-  console.log("@@ videos", videos);
 
   if (videos?.length === 0) return <p>데이터가 존재하지 않습니다.</p>;
 

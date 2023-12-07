@@ -1,40 +1,64 @@
 import styled from "@emotion/styled";
-import { searchVideos } from "@/src/api/search";
 import { useRouter } from "next/router";
-import { useQuery } from "@tanstack/react-query";
-import { SearchResponse } from "@/src/models/serach";
 import SearchVideoItem from "@/src/views/Search/components/SearchVideoItem";
+import MainInfiniteScroll from "@/src/views/Home/MainInfiniteScroll";
+import { searchVideos } from "@/src/api/search";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
 const Search = () => {
   const router = useRouter();
   const q = router.query.searchQuery;
-  const { data, isLoading, isError } = useQuery<SearchResponse>(
-    ["search", q],
-    () =>
+  // const { data, isLoading, isError } = useQuery<SearchResponse>(
+  //   ["search", q],
+  //   () =>
+  //     searchVideos({
+  //       part: "snippet,id",
+  //       q: q as string,
+  //     }),
+  //   {
+  //     enabled: typeof q === "string",
+  //     cacheTime: 1000 * 60 * 5,
+  //     staleTime: 1000 * 60,
+  //   },
+  // );
+  const { fetchNextPage, data } = useInfiniteQuery({
+    queryKey: ["search", q],
+    queryFn: ({ pageParam }) =>
       searchVideos({
         part: "snippet,id",
         q: q as string,
+        pageToken: pageParam,
       }),
-    {
-      enabled: typeof q === "string",
-      cacheTime: 1000 * 60 * 5,
-      staleTime: 1000 * 60,
-    },
-  );
-  console.log("@@ data", data);
-  if (isLoading) return <p>로딩중</p>;
-  if (isError) return <p>에러</p>;
+    enabled: typeof q === "string",
+    cacheTime: 1000 * 60 * 30,
+    staleTime: 1000 * 60 * 30,
+    getNextPageParam: (lastPage, allPages) => {
+      console.log("@@ allPages", allPages);
+      const { nextPageToken } = allPages[allPages.length - 1];
 
-  const watchList = data.items.filter((item) => !!item.id.videoId);
+      return nextPageToken;
+    },
+  });
+  // console.log("@@ data", data);
+
+  // if (isError) return <p>에러</p>;
+
+  const watchList = data?.pages.map((page) => page.items).flat();
+
+  if (!watchList) return <p>로딩중</p>;
+  // const watchList = data.items.filter((item) => !!item.id.videoId);
+  console.log("@@ watchList", watchList);
 
   return (
     <Container>
       <ListItemsContainer>
-        <SearchVideoItemWrapper>
-          {watchList.map((item) => (
-            <SearchVideoItem key={item.id.videoId} item={item} />
-          ))}
-        </SearchVideoItemWrapper>
+        <MainInfiniteScroll onNext={() => fetchNextPage()}>
+          <SearchVideoItemWrapper>
+            {watchList?.map((item) => (
+              <SearchVideoItem key={item.id.videoId} item={item} />
+            ))}
+          </SearchVideoItemWrapper>
+        </MainInfiniteScroll>
       </ListItemsContainer>
     </Container>
   );
