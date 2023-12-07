@@ -5,6 +5,7 @@ interface ISearchParams {
   part: string;
   q: string;
   maxResults?: number;
+  pageToken?: string;
 }
 
 export const searchVideos = async (params: ISearchParams) => {
