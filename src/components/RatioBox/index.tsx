@@ -18,6 +18,8 @@ const RatioBox = ({ children, ratio = [16, 9] }: Props) => {
 const Container = styled.div<{ ratioX: number; ratioY: number }>`
   position: relative;
   padding-bottom: ${({ ratioX, ratioY }) => (ratioY / ratioX) * 100}%;
+  border-radius: 12px;
+  overflow: hidden;
 `;
 
 const Inner = styled.div`
