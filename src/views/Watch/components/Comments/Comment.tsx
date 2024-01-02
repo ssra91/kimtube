@@ -43,7 +43,6 @@ const Container = styled.div`
   display: flex;
   gap: 16px;
   padding: 10px;
-  background-color: #222;
   p {
     font-size: 14px;
     line-height: 20px;
