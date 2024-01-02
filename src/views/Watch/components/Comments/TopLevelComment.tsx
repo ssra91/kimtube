@@ -38,7 +38,6 @@ const TopLevelComment = ({ item }: Props) => {
 };
 
 const Container = styled.div`
-  background-color: #444;
   margin: 20px;
   button {
     display: flex;

@@ -46,7 +46,7 @@ const MainInfiniteScroll = ({ children, onNext }: Props) => {
 const Container = styled.div``;
 const Detector = styled.div`
   height: 50px;
-  background-color: #18f;
+  background-color: rgba(255, 255, 255, 0);
 `;
 
 export default MainInfiniteScroll;
